@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  aimlessdb:
+    build: aimlessdb/
+    image: aimlessdb
+    hostname: aimlessdb
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: AimlessDevelopmentTeamIsCertainlyOneOfTheDevelopmentTeamsInTheWorld
+      MYSQL_DATABASE: aimless
+    ports:
+      - 333060:3306
+
+  aimlessapi:
+    image: aimlessapi
+    command: sh -c "node run.js"
+    ports:
+      2023:2023
+    environment:
+      MYSQL_HOST: aimlessdb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: AimlessDevelopmentTeamIsCertainlyOneOfTheDevelopmentTeamsInTheWorld
+      MYSQL_DB: aimless
+
+      NODE_ENV: production
+
+  # TODO: rtmp service
