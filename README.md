@@ -1,2 +1,3 @@
 # aimless
-Streaming platform built by noobs for noobs
+
+A stream platform
