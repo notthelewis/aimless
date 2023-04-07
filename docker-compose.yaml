@@ -14,7 +14,7 @@ services:
 
   aimlessapi:
     image: aimlessapi
-    command: sh -c "node run.js"
+    command: sh -c "python main.py"
     ports:
       2023:2023
     environment:
