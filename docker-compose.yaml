@@ -29,3 +29,5 @@ services:
     build: aimlessrtmp/
     image: aimlessrtmp
     hostname: aimlessrtmp
+    ports:
+      - 1935:1935
