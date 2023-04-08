@@ -158,4 +158,4 @@ echo "All images have been built successfully. Starting services..."
 start_containers "./service-names.csv"
 
 echo "Finished building tables.. Please see list of running services: "
-sudo docker ps | grep "r2ds2"
+sudo docker ps | grep "aimless"
