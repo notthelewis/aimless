@@ -3,15 +3,11 @@ import flask_restful
 import flask_sqlalchemy
 import flask_jwt_extended
 import flask_cors
+import needs_auth
+import wide_open
 
 app = Flask(__name__)
 
 
-@app.route('/needs-auth', methods=["GET"])
-def auth():
-    return render_template('401.html')
 
 
-@app.route('/wide-open', methods=["GET"])
-def open():
-    return render_template('200.html')
