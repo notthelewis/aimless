@@ -21,5 +21,3 @@ class router:
 
 	def get_open(self):
 		return self.wide_open.open()
-
-
