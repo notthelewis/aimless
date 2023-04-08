@@ -2,8 +2,8 @@ version: "3.7"
 
 services:
   #   aimlessdb:
-  #     build: aimlessdb/
-  #     image: aimlessdb
+  #     build: aimless/db/
+  #     image: aimless/db
   #     hostname: aimlessdb
   #     command: --default-authentication-plugin=mysql_native_password
   #     environment:
@@ -13,7 +13,7 @@ services:
   #       - 333060:3306
   # 
   #   aimlessapi:
-  #     image: aimlessapi
+  #     image: aimless/api
   #     command: sh -c "python main.py"
   #     ports:
   #       - 2023:2023
@@ -26,8 +26,8 @@ services:
   #       NODE_ENV: production
 
   aimlessrtmp:
-    build: aimlessrtmp/
-    image: aimlessrtmp
-    hostname: aimlessrtmp
+    build: aimless/rtmp/
+    image: aimless/rtmp
+    hostname: aimless-rtmp
     ports:
       - 1935:1935
