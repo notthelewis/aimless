@@ -8,16 +8,17 @@ from wide_open import wide_open
 
 app = Flask(__name__)
 
+
 class router:
-	def __inint__(self):
-		self.load_routes()
+    def __inint__(self):
+        self.load_routes()
 
-	def load_routes(self):
-		self.auth = needs_auth()
-		self.wide_open = wide_open()
+    def load_routes(self):
+        self.auth = needs_auth()
+        self.wide_open = wide_open()
 
-	def get_auth(self):
-		return self.auth.auth()
+    def get_auth(self):
+        return self.auth.auth()
 
-	def get_open(self):
-		return self.wide_open.open()
+    def get_open(self):
+        return self.wide_open.open()
