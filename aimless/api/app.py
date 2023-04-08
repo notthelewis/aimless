@@ -15,7 +15,3 @@ def auth():
 @app.route('/wide-open', methods=["GET"])
 def open():
     return render_template('200.html')
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port='42069', debug=True)

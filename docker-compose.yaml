@@ -12,18 +12,17 @@ services:
   #     ports:
   #       - 333060:3306
   # 
-  #   aimlessapi:
-  #     image: aimless/api
-  #     command: sh -c "python main.py"
-  #     ports:
-  #       - 2023:2023
-  #     environment:
-  #       MYSQL_HOST: aimlessdb
-  #       MYSQL_USER: root
-  #       MYSQL_PASSWORD: AimlessDevelopmentTeamIsCertainlyOneOfTheDevelopmentTeamsInTheWorld
-  #       MYSQL_DB: aimless
-  # 
-  #       NODE_ENV: production
+  aimlessapi:
+    image: aimless/api
+    ports:
+      - 42069:42069
+    environment:
+      MYSQL_HOST: aimlessdb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: AimlessDevelopmentTeamIsCertainlyOneOfTheDevelopmentTeamsInTheWorld
+      MYSQL_DB: aimless
+  
+      NODE_ENV: production
 
   aimlessrtmp:
     build: aimless/rtmp/
