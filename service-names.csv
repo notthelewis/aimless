@@ -1,4 +1,4 @@
 service_name
-aimlessdb
-aimlessapi
-aimlessrtmp
+aimless/db
+aimless/api
+aimless/rtmp
