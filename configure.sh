@@ -58,15 +58,6 @@ build_all_services() {
 	done < $1
 }
 
-# Run docker-compose up -d on each service-name 
-start_containers() {
-	while IFS=, read -r field; do
-		if [ "$field" != "service_name" ]; then # Skips the header
-			sudo docker-compose up --build -d "$field"
-		fi
-	done < $1
-}
-
 # Get permission from user or die trying, soldier.
 get_user_permission() {
 	read -p "$1" yn
@@ -143,19 +134,17 @@ else
 fi
 
 get_user_permission "Compiling the .dbml source files to .sql file. Proceed?"
-
-convert_dbml_to_mysql "aimlessdb/db-schema.dbml"
+convert_dbml_to_mysql "aimless/db/db-schema.dbml"
 
 echo "All dependencies met. Next, we need to build the containers from the Dockerfiles."
 
 get_user_permission "Do you wish to proceed with building them?"
-
 build_all_services "./service-names.csv"
 
 echo "All images have been built successfully. Starting services..."
 
 # Start services
-start_containers "./service-names.csv"
+docker-compose up -d
 
-echo "Finished building tables.. Please see list of running services: "
-sudo docker ps | grep "r2ds2"
+echo "Please find a list of running services"
+sudo docker ps | grep -e "aimless" -e "external"
