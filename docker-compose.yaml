@@ -16,6 +16,8 @@ services:
     image: aimless/api
     ports:
       - 42069:42069
+    volumes:
+      - ./aimless/api:/aimless-api
     environment:
       MYSQL_HOST: aimlessdb
       MYSQL_USER: root
@@ -30,3 +32,6 @@ services:
     hostname: aimless-rtmp
     ports:
       - 1935:1935
+
+volumes:
+  aimlessapi:
