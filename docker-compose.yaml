@@ -1,17 +1,17 @@
 version: "3.7"
 
 services:
-  #   aimlessdb:
-  #     build: aimless/db/
-  #     image: aimless/db
-  #     hostname: aimlessdb
-  #     command: --default-authentication-plugin=mysql_native_password
-  #     environment:
-  #       MYSQL_ROOT_PASSWORD: AimlessDevelopmentTeamIsCertainlyOneOfTheDevelopmentTeamsInTheWorld
-  #       MYSQL_DATABASE: aimless
-  #     ports:
-  #       - 333060:3306
-  # 
+  aimlessdb:
+    build: aimless/db/
+    image: aimless/db
+    hostname: aimlessdb
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: AimlessDevelopmentTeamIsCertainlyOneOfTheDevelopmentTeamsInTheWorld
+      MYSQL_DATABASE: aimless
+    ports:
+      - 333060:3306
+
   aimlessapi:
     image: aimless/api
     ports:
@@ -23,7 +23,7 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: AimlessDevelopmentTeamIsCertainlyOneOfTheDevelopmentTeamsInTheWorld
       MYSQL_DB: aimless
-  
+
       NODE_ENV: production
 
   aimlessrtmp:
