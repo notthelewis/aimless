@@ -31,7 +31,7 @@ services:
     image: aimless/rtmp
     hostname: aimless-rtmp
     volumes:
-      - ./aimless/rtmp:/aimless-rtmp
+      - ./aimless/rtmp/tmp/recordings:/aimless-rtmp/tmp/recordings
     ports:
       - 1935:1935
 
