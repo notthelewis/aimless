@@ -3,22 +3,19 @@ import flask_restful
 import flask_sqlalchemy
 import flask_jwt_extended
 import flask_cors
-from needs_auth import needs_auth
-from wide_open import wide_open
 
-app = Flask(__name__)
+from routes.wide_open import wideopen
+from routes.needs_auth import needsauth
 
 
-class router:
-    def __inint__(self):
-        self.load_routes()
+def create_app():
+    app = Flask(__name__)
 
-    def load_routes(self):
-        self.auth = needs_auth()
-        self.wide_open = wide_open()
+    app.register_blueprint(wideopen)
+    app.register_blueprint(needsauth)
+    return app
 
-    def get_auth(self):
-        return self.auth.auth()
 
-    def get_open(self):
-        return self.wide_open.open()
+if __name__ == "__main__":
+    app = create_app()
+    app.run()
