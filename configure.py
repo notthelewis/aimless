@@ -8,7 +8,7 @@ cwd = os.getcwd()
 
 def command_exists(name):
     """Check whether `name` is in the PATH"""
-    return which(name) is not None
+    return which(name, os.F_OK) is not None
 
 
 def is_valid_csv_entry(L, Omitted):
