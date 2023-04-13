@@ -2,6 +2,7 @@ from sys import platform
 import subprocess as sp
 import os
 
+cwd = os.getcwd()
 
 def check_dependency(dependency_file, to_check):
     for line in dependency_file:
@@ -50,4 +51,16 @@ def check_dependencies():
         print("All dependencies are met")
 
 
-check_dependencies()
+def build_db_tables():
+    # Installs dbml2sql every time. This would be better if this only ran when
+    # dbml2sql does not already exist
+
+    print("Installing dbml2sql")
+    os.system('npm i -g @dbml/cli')
+    print("Converting dbml to sql")
+    os.system(f'dbml2sql {cwd}/aimless/db/db-schema.dbml')
+
+
+build_db_tables()
+
+# check_dependencies()
