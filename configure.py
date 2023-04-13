@@ -47,7 +47,12 @@ def build_db_schema():
         os.system('npm i -g @dbml/cli')
 
     print("Converting dbml to sql")
-    os.system(f'dbml2sql {cwd}/aimless/db/db-schema.dbml -o {cwd}/aimless/db/db-schema.sql')
+
+    base_path = f"{cwd}/aimless/db"
+    in_path = f"{base_path}/db-schema.dbml"
+    out_path = f"{base_path}/db-schema.sql"
+
+    os.system(f"dbml2sql {in_path} --mysql -o {out_path}")
 
 
 def build_container(container_name):
