@@ -47,7 +47,7 @@ def build_db_schema():
         os.system('npm i -g @dbml/cli')
 
     print("Converting dbml to sql")
-    os.system(f'dbml2sql {cwd}/aimless/db/db-schema.dbml')
+    os.system(f'dbml2sql {cwd}/aimless/db/db-schema.dbml -o {cwd}/aimless/db/db-schema.sql')
 
 
 def build_container(container_name):
