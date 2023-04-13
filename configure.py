@@ -1,66 +1,54 @@
-from sys import platform
-import subprocess as sp
+#!/usr/bin/env python3
 import os
 
 cwd = os.getcwd()
 
-def check_dependency(dependency_file, to_check):
-    for line in dependency_file:
-        if line in to_check.strip():
-            return (True, line)
 
-    return (False, line)
+def command_exists(name):
+    """Check whether `name` is in the PATH"""
+    from shutil import which
+    return which(name) is not None
 
 
 def check_dependencies():
-    if platform == "linux" or platform == "linux2" or platform == "darwin":
-        print("Run ./configure.sh instead. This script is built for windows")
-        return
+    """Iterate `dependencies.csv`, checking whether each line exists
+    on the system as an executable"""
 
-    # ======================#
-    # We must be on windows #
-    # ======================#
+    print("Checking required dependencies...")
+    with open(f'{cwd}/dependencies.csv') as deps:
+        for d in deps:
+            d = d.strip()
 
-    all_installed_sw = str(sp.check_output(['wmic', 'product', 'get', 'name']))
+            # Skip blank line and header
+            valid_entry = d != "dependency_name" and d not in [
+                    '\n', '\r\n'] and d != ''
 
-    try:
-        total_dependencies = 0
-        unmet_dependencies = []
+            if not valid_entry:
+                continue
 
-        # TODO: Make this routine less shit
-        with open('./dependencies.csv') as f:
-            for i in range(len(all_installed_sw)):
-                # Skip the csv header
-                if i == 0:
-                    continue
+            if command_exists(d) is False:
+                print(f"{d} Isn't installed. Install to continue")
+                exit(1)
 
-                total_dependencies += 1
-                current_line = all_installed_sw.split("\\r\\r\n")[6:][i]
-
-                dependency_met = check_dependency(f, current_line.strip())
-
-                if dependency_met[0] is False:
-                    unmet_dependencies.insert(dependency_met[1])
-
-    except IndexError:
-        if len(unmet_dependencies) > 0:
-            print(f"Unmet dependencies found: {*unmet_dependencies,}")
-            print("Please install these packages")
-            exit(127)
-
-        print("All dependencies are met")
+    print("All dependencies met")
 
 
-def build_db_tables():
-    # Installs dbml2sql every time. This would be better if this only ran when
-    # dbml2sql does not already exist
+def build_db_schema():
+    """Converts dbml schema to sql file, which can be inserted into the db"""
 
-    print("Installing dbml2sql")
-    os.system('npm i -g @dbml/cli')
+    # We can handle this dependency differently, as dbml2sql can be installed
+    # using npm
+    if not command_exists("dbml2sql"):
+        print("Installing dbml2sql")
+        os.system('npm i -g @dbml/cli')
+
     print("Converting dbml to sql")
     os.system(f'dbml2sql {cwd}/aimless/db/db-schema.dbml')
 
 
-build_db_tables()
+########################
+# Start of main script #
+########################
 
-# check_dependencies()
+check_dependencies()
+build_db_schema()
