@@ -19,5 +19,4 @@ Your system must have:
 
 Run:
  - `yarn build` to build the code 
- - `node ./lib/index.js` to run the code
-
+ - `yarn start -u "10+CharacterUsernameHere" -p "12+CharacterPasswordHere"` to run the code
