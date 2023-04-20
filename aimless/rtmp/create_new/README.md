@@ -18,5 +18,6 @@ Your system must have:
  - node
 
 Run:
+ - `yarn` to install dependencies
  - `yarn build` to build the code 
  - `yarn start -u "10+CharacterUsernameHere" -p "12+CharacterPasswordHere"` to run the code
