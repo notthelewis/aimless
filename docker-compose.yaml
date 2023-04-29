@@ -1,19 +1,19 @@
 version: "3.7"
 
 services:
-  aimlessdb:
-    build: aimless/db/
-    image: aimless/db
-    hostname: aimlessdb
-    command: --default-authentication-plugin=mysql_native_password
-    environment:
-      MYSQL_ROOT_PASSWORD: AimlessDevelopmentTeamIsCertainlyOneOfTheDevelopmentTeamsInTheWorld
-      MYSQL_DATABASE: aimless
-    ports:
-      - 333060:3306
-
-  aimlessapi:
-    image: aimless/api
+  #   aimlessdb:
+  #     build: aimless/db/
+  #     image: aimless/db
+  #     hostname: aimlessdb
+  #     command: --default-authentication-plugin=mysql_native_password
+  #     environment:
+  #       MYSQL_ROOT_PASSWORD: AimlessDevelopmentTeamIsCertainlyOneOfTheDevelopmentTeamsInTheWorld
+  #       MYSQL_DATABASE: aimless
+  #     ports:
+  #       - 333060:3306
+  # 
+  aimless-api:
+    image: aimless-api
     ports:
       - 42069:42069
     volumes:
@@ -23,12 +23,11 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: AimlessDevelopmentTeamIsCertainlyOneOfTheDevelopmentTeamsInTheWorld
       MYSQL_DB: aimless
-
       NODE_ENV: production
 
-  aimlessrtmp:
-    build: aimless/rtmp/
-    image: aimless/rtmp
+  aimless-rtmp:
+    build: aimless-rtmp/
+    image: aimless-rtmp
     hostname: aimless-rtmp
     volumes:
       - ./aimless/rtmp/tmp/recordings:/aimless-rtmp/tmp/recordings

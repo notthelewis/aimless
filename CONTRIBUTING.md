@@ -1,11 +1,11 @@
 # Contributing to Aimless
 
 # Tools
- - A unix-like environment to configure and build the backend (VMs or WSL2 if you're on Windows)
  - Docker 
- - NodeJS for the configure script to build DB 
- - A good IDE (VSCode, Sublime, emacs, vim)
+ - NodeJS & npm for the configure script to build DB 
+ - A good IDE (VSCode, Sublime, emacs, vim etc)
  - Git client (cmd line is fine)
+
 
 # Conventions
 ## Git workflow
