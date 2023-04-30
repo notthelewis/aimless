@@ -33,6 +33,7 @@ services:
       - ./aimless/rtmp/tmp/recordings:/aimless-rtmp/tmp/recordings
     ports:
       - 1935:1935
+      - 1523:1523
 
 volumes:
   aimlessapi:
