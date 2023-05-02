@@ -1,5 +1,7 @@
 .App {
     text-align: center;
+    display: flex column;
+    justify-content: flex-start;
 }
 
 :root {
@@ -9,19 +11,7 @@
     --shadow_colour_mid: #52527a;
 }
 
-.header {
-    background-color: var(--bg_purple);
-    color: var(--fg_purple);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    animation: header_dance 1s infinite linear alternate;
-}
-
-@keyframes header_dance {
+@keyframes light_shadow_flicker {
     0% {
         text-shadow: 1px 1px 1px var(--fg_purple);
     }
