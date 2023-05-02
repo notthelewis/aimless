@@ -11,6 +11,11 @@
     --shadow_colour_mid: #52527a;
 }
 
+/* Global styles use snake_case naming convention*/
+.shadow_dance {
+    animation: light_shadow_flicker 1s infinite linear alternate;
+}
+
 @keyframes light_shadow_flicker {
     0% {
         text-shadow: 1px 1px 1px var(--fg_purple);
