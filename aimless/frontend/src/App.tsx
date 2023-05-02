@@ -6,9 +6,9 @@ import "./App.css";
 
 import { HeaderMenu, Header } from "./components";
 
-function Content({ children }: { children: React.ReactNode }) {
-    return <p className="content">{children}</p>;
-}
+// function Content({ children }: { children: React.ReactNode }) {
+//     return <p className="content">{children}</p>;
+// }
 
 function App() {
     return (
@@ -23,11 +23,6 @@ function App() {
              * Though, individual menu element will change colour and show tool tips upon scrolling.
              */}
             <HeaderMenu />
-            <Content>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur eaque autem impedit praesentium
-                officia exercitationem quod asperiores eos nam magnam quidem dolorum, fugiat dignissimos accusamus
-                inventore excepturi est fuga fugit.
-            </Content>
         </div>
     );
 }
