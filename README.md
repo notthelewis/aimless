@@ -1,7 +1,9 @@
 ## DEPRECATED
 
 This project has unfortunately been abandoned. I have made it public to showcase to any potential employers that I have 
-skills in Docker.
+skills in Docker. To any prospective employers, there are some branches which contain more insight into the work itself.
+This project does not work in its current state but it just used to demonstrate that I have in-fact worked with Docker,
+NGINX, NodeJS, React, Express & Python. 
 
 # aimless
 
