@@ -1,6 +1,11 @@
+## DEPRECATED
+
+This project has unfortunately been abandoned. I have made it public to showcase to any potential employers that I have 
+skills in Docker.
+
 # aimless
 
-A stream platform
+A stream platform.
 
 
 # Running
