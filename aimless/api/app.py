@@ -4,14 +4,18 @@ import flask_sqlalchemy
 import flask_jwt_extended
 import flask_cors
 
-app = Flask(__name__)
+from routes.wide_open import wideopen
+from routes.needs_auth import needsauth
 
 
-@app.route('/needs-auth', methods=["GET"])
-def auth():
-    return render_template('401.html')
+def create_app():
+    app = Flask(__name__)
+
+    app.register_blueprint(wideopen)
+    app.register_blueprint(needsauth)
+    return app
 
 
-@app.route('/wide-open', methods=["GET"])
-def open():
-    return render_template('200.html')
+if __name__ == "__main__":
+    app = create_app()
+    app.run()
